@@ -1,0 +1,31 @@
+<div class="color-light flex main-wrapper" *ngIf="author" >
+  <div class="col photo-block">
+    <span class="helper"></span>
+    <img src="{{author.photo || 'assets/default_avatar.png'}}" alt="author" class="author-avatar"/>
+  </div>
+  <div *ngIf="author" class="col info-block">
+    <div class="color-text-dark title-block">
+        <p>
+          <span class="title bold">{{ author.name }}</span>
+          ({{ author.years }})
+        </p>
+
+        <div class="actions-block">
+          <a [routerLink]="['/book/create']" [queryParams]="{ author: author.id }" class="decorated-link italic">Добавить книгу</a>
+          <img src="assets/edit-icon.png" alt="edit" title="Редактировать" (click)="editAuthor(author.id)"/>
+          <img src="assets/delete-icon.png" alt="edit" title="Удалить" (click)="deleteAuthor(author.id)" />
+        </div>
+    </div>
+    <p class="color-text-dark text-justify">
+      {{ author.content }}
+    </p>
+    <div class="books-block color-text-dark" *ngIf="author.books.length">
+      <p class="bold">Книги</p>
+      <ul class="books-list">
+        <li class="books-item" *ngFor="let book of author.books" (click)="navigateToBook(book.id)">
+            <a [routerLink]="['/book/' + book.id]" class="decorated-link">{{ book.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

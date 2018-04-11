@@ -1,1 +1,179 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+body {
+    background: #00cec9;
+    padding: 3em;
+    font-family: 'Trebuchet MS';
+    color:#fff;
+
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.nav-list {
+    list-style-type:none;
+    margin:0 0 2em 0;
+    padding:0;
+}
+.nav-list li {
+    display:inline;
+    margin-right: 30px;
+}
+.nav-list li a {
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 0px;
+}
+.menu-link {
+    color:#fff;
+    text-decoration:none;
+}
+
+.color-text-dark {
+    color: #00807d;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.col {
+    padding: 1.3em 1.3em;
+}
+.color-dark {
+    background: #81ecec;
+}
+.color-light {
+    background: #e9fcfc;
+}
+
+.flex {
+    display: flex;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+input.txt, textarea.txt {
+    border: 0;
+    padding: 1em;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-family: Arial;
+
+    &.search-field {
+        width: 300px;
+        margin: 1em;
+    }
+
+    &::-webkit-input-placeholder {
+        font-style: italic;
+        color: #737373;
+    }
+
+    &:focus {
+        outline: 2px solid rgba(255, 204, 0, .2);
+    }
+}
+
+.smallMargin {
+    margin: 1em;
+}
+
+.decorated-link {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.header-block {
+    display: flex;
+    align-items: center;
+    .plus-icon {
+        cursor: pointer;
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
+
+.btn {
+    background-color: #a3c2c2;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 150px;
+    transition: all .3s;
+
+    &.confirm-btn {
+        background-color: #00cc99; 
+
+        &:hover {
+            background-color: #00b386;
+        }
+    }
+
+    &.cancel-btn {
+        &:hover {
+            background-color: #85adad;
+        }
+    }
+}
+
+.error-text {
+    margin-left: 30px;
+    width: 100%;
+    color: #e60000;
+    font-size: 14px;
+}
+.empty-block {
+    color: rgba(0, 128, 125, .2);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 150px;
+    height: 150px;
+    text-align: center;
+}
+
+.container {
+    height: 110px;
+}
+
+.main-wrapper {
+    height: 95%;
+
+    .scroll-wrapper {
+        height: calc(100% - 110px);
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+}
+
+.map-container-inner {
+    height: 450px;
+    width: 450px;
+}

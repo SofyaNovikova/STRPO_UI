@@ -1,0 +1,20 @@
+<div class="color-light flex main-wrapper" *ngIf="publisher" >
+  <div class="col photo-block">
+    <span class="helper"></span>
+    
+    <ya-map [latitude]="publisher.latitude" [longitude]="publisher.longitude" zoom="15">
+      <ya-marker [latitude]="publisher.latitude" [longitude]="publisher.longitude">
+      </ya-marker>
+    </ya-map>
+  </div>
+  <div *ngIf="publisher" class="col info-block">
+    <div class="color-text-dark title-block">
+        <p>
+          <span class="title bold">{{ publisher.name }}</span>
+        </p>
+    </div>
+    <p class="color-text-dark text-justify">
+      {{ publisher.content }}
+    </p>
+  </div>
+</div>

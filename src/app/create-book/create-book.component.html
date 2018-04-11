@@ -1,0 +1,69 @@
+<section class="flex color-light main-wrapper">
+    <div class="col">
+      <div class="input-block">
+        <input type="text" class="txt form-input" placeholder="Название" [(ngModel)]="book.name" (ngModelChange)="onInputChange()"/>
+      </div>
+      <div class="input-block">
+        <ng-select
+          [items]="authors"
+          [searchable]="false"
+          [disabled]="authorDisabled"
+          bindLabel="name"
+          bindValue="id"
+          placeholder="Выберите автора"
+          [(ngModel)]="book.authorId"
+          class="select-input"
+          (ngModelChange)="onInputChange()">
+        </ng-select>
+      </div>
+      <div class="input-block">
+          <ng-select
+            [items]="genres"
+            [searchable]="false"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Выберите жанр"
+            [(ngModel)]="book.genreId"
+            class="select-input"
+            (ngModelChange)="onInputChange()">
+          </ng-select>
+      </div>
+      <div class="input-block">
+          <ng-select
+            [items]="publishers"
+            [searchable]="false"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Выберите издательство"
+            [(ngModel)]="book.publisherId"
+            class="select-input"
+            (ngModelChange)="onInputChange()">
+          </ng-select>
+      </div>
+      <div class="input-block">
+        <textarea rows="4" cols="50" class="txt" [(ngModel)]="book.content" placeholder="Описание" (ngModelChange)="onInputChange()"></textarea>
+      </div>
+      <div class="input-block upload-block">
+        <input
+          class="input-file"
+          type="file"
+          (change)="handleFileInput($event.target.files)"
+          accept="image/*"
+          id="image">
+          <label class="color-text-dark bold" for="image">Загрузите фото</label>
+        <div class="error-text" [hidden]="!error">
+          {{ error }}
+        </div>
+      </div>
+  
+      <div class="btn-block">
+        <button class="btn cancel-btn" (click)="goBack()">Назад</button>
+        <button class="btn confirm-btn" (click)="createBook()">{{ book.id ? 'Изменить' : 'Создать' }}</button>
+      </div>
+    </div>
+  
+    <div class="avatar-block">
+      <span class="helper"></span>
+      <img src="{{book.photo || 'assets/default_book.png'}}" class="avatar"/>
+    </div>
+  </section>

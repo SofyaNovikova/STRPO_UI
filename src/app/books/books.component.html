@@ -1,0 +1,30 @@
+<div class="main-wrapper">
+  <div class="container color-dark">
+    <div class="col header-block">
+      <input type="text" class="txt search-field" name="bookSearch" placeholder="Поиск" [(ngModel)]="search" (ngModelChange)="onSearchChange()">
+
+      <div class="plus-icon" (click)="navigateToCreateBook()" title="Создать">
+        <img alt="add" src="assets/plus-icon.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrapper color-light">
+    <div class="grid-container" *ngIf="filteredBooks.length">
+      <div class="grid-item" *ngFor="let book of filteredBooks" (click)="navigateToBook(book.id)">
+        <div class="book-photo" >
+          <img src="{{book.photo || 'assets/default_book.png'}}" alt="book" />
+        </div>
+        <p class="color-text-dark bold">
+          {{ book.name }}
+        </p>
+        <p class="color-text-dark italic" *ngIf="book.author">
+          {{ book.author.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-block color-light" *ngIf="!filteredBooks.length">
+    Нет данных
+  </div>
+</div>

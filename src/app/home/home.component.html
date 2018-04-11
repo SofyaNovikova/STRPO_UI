@@ -1,0 +1,27 @@
+<div class="main-wrapper">
+  <div class="container color-dark">
+    <div class="col header-block">
+      <input type="text" class="txt search-field" name="authorSearch" placeholder="Поиск" [(ngModel)]="search" (ngModelChange)="onSearchChange()">
+
+      <div class="plus-icon" (click)="navigateToCreateAuthor()" title="Создать">
+        <img alt="add" src="assets/plus-icon.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrapper color-light">
+    <div class="author-item" *ngFor="let author of filteredAuthors" (click)="navigateToAuthor(author.id)">
+      <div class="col cell">
+        <img class="avatar" src="{{author.photo || 'assets/default_avatar.png'}}" alt="photo" />
+      </div>
+      <div class="col cell">
+        <p class="color-text-dark">
+          <span class="bold">{{ author.name }}</span>
+          ({{ author.years }})
+        </p>
+      </div>
+    </div>
+    <div class="empty-block" *ngIf="!filteredAuthors.length">
+      Нет данных
+    </div>
+  </div>
+</div>

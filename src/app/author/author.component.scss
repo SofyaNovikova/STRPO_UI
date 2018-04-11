@@ -1,0 +1,57 @@
+.photo-block {
+    width: 35%;
+    white-space: nowrap;
+
+    .author-avatar {
+        width: 100%;
+        vertical-align: middle;
+    }
+}
+
+.info-block {
+    width: 60%;
+
+    .color-text-dark {
+        max-width: 600px;
+    }
+}
+
+.color-light {
+    min-height: 400px;
+
+    .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+
+.books-block {
+    margin-top: 40px;
+    font-size: 14px;
+
+    .books-list {
+        padding-left: 15px;
+    }
+}
+
+.title-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .actions-block {
+        span {
+            font-size: 14px;
+        }
+        img {
+            width: 20px;
+            margin: 0 .5em;
+            cursor: pointer;
+        }
+    }
+}
+
+.main-wrapper {
+    overflow-y: auto;
+}

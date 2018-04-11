@@ -1,0 +1,33 @@
+
+<section class="flex color-light main-wrapper">
+  <div class="col">
+    <div class="input-block">
+      <input type="text" class="txt form-input" placeholder="Имя" [(ngModel)]="author.name"/>
+    </div>
+    <div class="input-block">
+      <input type="text" class="txt form-input" placeholder="Годы жизни" [(ngModel)]="author.years"/>
+    </div>
+    <div class="input-block">
+      <textarea rows="4" cols="50" class="txt" [(ngModel)]="author.content" placeholder="Описание"></textarea>
+    </div>
+    <div class="input-block upload-block">
+      <input
+        class="input-file"
+        type="file"
+        (change)="handleFileInput($event.target.files)"
+        accept="image/*"
+        id="image">
+        <label class="color-text-dark bold" for="image">Загрузите фото</label>
+    </div>
+
+    <div class="btn-block">
+      <button class="btn cancel-btn" (click)="goBack()">Назад</button>
+      <button class="btn confirm-btn" (click)="createAuthor()">Создать</button>
+    </div>
+  </div>
+
+  <div class="avatar-block">
+    <span class="helper"></span>
+    <img src="{{author.photo || 'assets/default_avatar.png'}}" class="avatar"/>
+  </div>
+</section>

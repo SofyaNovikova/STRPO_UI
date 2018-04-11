@@ -1,0 +1,105 @@
+<div class="color-light flex main-wrapper" *ngIf="book" >
+  <div class="col photo-block">
+    <span class="helper"></span>
+    <img src="{{book.photo || 'assets/default_book.png'}}" alt="book" class="book-avatar"/>
+  </div>
+  <div *ngIf="book" class="col info-block">
+    <div class="color-text-dark title-block">
+      <p class="title bold">
+        {{ book.name }}
+      </p>
+      <div class="actions-block">
+        <img src="assets/edit-icon.png" alt="edit" title="Редактировать" (click)="editBook(book.id)"/>
+        <img src="assets/delete-icon.png" alt="edit" title="Удалить" (click)="deleteBook(book.id)" />
+      </div>
+    </div>
+    <p class="color-text-dark italic sub-title">
+      Автор:&nbsp;
+      <a [routerLink]="['/author/' + book.author.id]" class="decorated-link">{{ book.author.name }}</a>
+    </p>
+    <p class="color-text-dark italic sub-title">
+      Жанр: {{ book.genre.name }}
+    </p>
+    <p class="color-text-dark italic sub-title">
+      Издательство:&nbsp;
+      <a [routerLink]="['/publisher/' + book.publisher.id]" class="decorated-link">{{ book.publisher.name }}</a>
+    </p>
+    <p class="color-text-dark text-justify content-block">
+      {{ book.content }}
+    </p>
+    <!-- <div class="rating-block">
+      <p class="color-text-dark italic"> Рейтинг: {{ book.averageRate }} </p>
+      <fieldset class="rating">
+        <input type="radio" id="star5" name="rating" value="5" [checked]="book.averageRate === 5" (click)="setRating($event)"/>
+        <label class = "full" for="star5"></label>
+        <input type="radio" id="star4" name="rating" value="4" [checked]="book.averageRate === 4" (click)="setRating($event)"/>
+        <label class = "full" for="star4"></label>
+        <input type="radio" id="star3" name="rating" value="3" [checked]="book.averageRate === 3" (click)="setRating($event)"/>
+        <label class = "full" for="star3"></label>
+        <input type="radio" id="star2" name="rating" value="2" [checked]="book.averageRate === 2" (click)="setRating($event)"/>
+        <label class = "full" for="star2"></label>
+        <input type="radio" id="star1" name="rating" value="1" [checked]="book.averageRate === 1" (click)="setRating($event)"/>
+        <label class = "full" for="star1"></label>
+      </fieldset>
+    </div> -->
+    <div class="reviews-block">
+      <div class="header-block color-text-dark bold">
+        Отзывы
+      </div>
+      <div class="review-create">
+          <div class="input-block">
+            <input type="text" class="txt form-input" placeholder="Ваше имя" [(ngModel)]="newReview.author"/>
+          </div>
+          <div class="input-block">
+            <textarea rows="4" cols="50" class="txt" [(ngModel)]="newReview.content" placeholder="Отзыв"></textarea>
+          </div>
+          <div class="flex">
+            <div class="rating-block">
+              <p class="color-text-dark italic"> {{ newReview.rate }} </p>
+              <fieldset class="rating editable">
+                <input type="radio" id="star5" name="rating" value="5" [checked]="newReview.rate === 5" (click)="setRating($event)"/>
+                <label class = "full" for="star5"></label>
+                <input type="radio" id="star4" name="rating" value="4" [checked]="newReview.rate === 4" (click)="setRating($event)"/>
+                <label class = "full" for="star4"></label>
+                <input type="radio" id="star3" name="rating" value="3" [checked]="newReview.rate === 3" (click)="setRating($event)"/>
+                <label class = "full" for="star3"></label>
+                <input type="radio" id="star2" name="rating" value="2" [checked]="newReview.rate === 2" (click)="setRating($event)"/>
+                <label class = "full" for="star2"></label>
+                <input type="radio" id="star1" name="rating" value="1" [checked]="newReview.rate === 1" (click)="setRating($event)"/>
+                <label class = "full" for="star1"></label>
+              </fieldset>
+            </div>
+            <button class="btn confirm-btn" (click)="createReview()">Отправить</button>
+          </div>
+      </div>
+      <div class="reviews-container" *ngIf="book.reviews.length">
+        <div class="review-item" *ngFor="let review of book.reviews; let i = index">
+          <div class="review-header" >
+            <p class="review-author"> {{ review.author }} </p>
+            <div class="rating-block">
+              <p class="color-text-dark italic"> {{ review.rate }} </p>
+              <fieldset class="rating">
+                <input type="radio" id="star5" name="rating-{{i}}" value="5" [checked]="review.rate == 5" />
+                <label class = "full" for="star5"></label>
+                <input type="radio" id="star4" name="rating-{{i}}" value="4" [checked]="review.rate == 4" />
+                <label class = "full" for="star4"></label>
+                <input type="radio" id="star3" name="rating-{{i}}" value="3" [checked]="review.rate == 3" />
+                <label class = "full" for="star3"></label>
+                <input type="radio" id="star2" name="rating-{{i}}" value="2" [checked]="review.rate == 2" />
+                <label class = "full" for="star2"></label>
+                <input type="radio" id="star1" name="rating-{{i}}" value="1" [checked]="review.rate == 1" />
+                <label class = "full" for="star1"></label>
+              </fieldset>
+            </div>
+          </div>
+          <p class="review-content">
+            {{ review.content }}
+          </p>
+        </div>
+      </div>
+      <div class="reviews-empty-container" *ngIf="book.reviews.length === 0">
+        <span class="color-text-dark"> Будьте первым, кто оставит отзыв! </span>
+      </div>
+    </div>
+  </div>
+</div>
